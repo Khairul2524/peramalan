@@ -51,6 +51,10 @@
 								$ha = 1 - $a->a;
 								$forecast = '';
 								$jumlah = '';
+								$jumlahabsolut = [];
+								$jumlah_error_pangkat = [];
+								$jumlah_persen_error = [];
+								$jumlah2 = [];
 								// echo $ha;
 								$no = 1;
 								foreach ($siswa as $d) {
@@ -85,18 +89,39 @@
 											echo "<td>" . $absolut . "</td>";
 											$error_pangkat = pow($absolut, 2);
 											echo "<td>" . number_format($error_pangkat, 2) . "</td>";
-											$persen_error = number_format($absolut / $d->jumlah, 2);
-											echo "<td>" . $persen_error * 100 . '%' . "</td>";
+											$persen_error = number_format($absolut / $d->jumlah, 2) * 100;
+											echo "<td>" . $persen_error  . '%' . "</td>";
 											$forecast = number_format($q + $r, 2);
 											$jumlah = $forecast;
+											$jumlahabsolut[] = $absolut;
+											$jumlah_error_pangkat[] = $error_pangkat;
+											$jumlah_persen_error[] = $persen_error;
 										}
 
+										$jumlah2[] = $d->jumlah;
 										?>
-
-
-
 									</tr>
 								<?php } ?>
+								<tr>
+
+									<td colspan="5"></td>
+									<td><?= array_sum($jumlahabsolut); ?></td>
+									<td><?= array_sum($jumlah_error_pangkat); ?></td>
+									<td><?= array_sum($jumlah_persen_error) . '%'; ?></td>
+
+								</tr>
+								<tr>
+									<td colspan="5"></td>
+									<td><?= array_sum($jumlahabsolut) / count($jumlah2); ?></td>
+									<td><?= array_sum($jumlah_error_pangkat) / count($jumlah2); ?></td>
+									<td><?= array_sum($jumlah_persen_error) / count($jumlah2) . '%'; ?></td>
+								</tr>
+								<tr>
+									<td colspan="5"></td>
+									<td class="font-viga">MAD</td>
+									<td class="font-viga">MSE</td>
+									<td class="font-viga">MAPE</td>
+								</tr>
 							</tbody>
 
 						</table>
