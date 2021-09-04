@@ -1,4 +1,5 @@
 <!-- Content Wrapper. Contains page content -->
+<script type="text/javascript" src="<?= base_url('assets/backand/dist/js/') ?>Chart.js"></script>
 <div class="content-wrapper">
 	<!-- Content Header (Page header) -->
 	<section class="content-header">
@@ -19,7 +20,7 @@
 		<!-- Default box -->
 		<div class="card">
 			<div class="card-header">
-				<h3 class="card-title font-viga">Dashboard</h3>
+				<h3 class="card-title font-viga">Grafik Jumlah Siswa</h3>
 
 				<div class="card-tools">
 					<button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -28,7 +29,7 @@
 				</div>
 			</div>
 			<div class="card-body">
-				Start creating your amazing application!
+				<canvas id="myChart"></canvas>
 			</div>
 			<!-- /.card-body -->
 			<div class="card-footer">

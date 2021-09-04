@@ -14,4 +14,8 @@ class User_model extends CI_Model
             echo "username sudah ada";
         }
     }
+    public function getsiswa()
+    {
+        return $this->db->get('jumlahsiswa')->result();
+    }
 }

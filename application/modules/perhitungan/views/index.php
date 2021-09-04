@@ -105,16 +105,16 @@
 								<tr>
 
 									<td colspan="5"></td>
-									<td><?= array_sum($jumlahabsolut); ?></td>
-									<td><?= array_sum($jumlah_error_pangkat); ?></td>
-									<td><?= array_sum($jumlah_persen_error) . '%'; ?></td>
+									<td class="font-viga"><?= array_sum($jumlahabsolut); ?></td>
+									<td class="font-viga"><?= array_sum($jumlah_error_pangkat); ?></td>
+									<td class="font-viga"><?= array_sum($jumlah_persen_error) . '%'; ?></td>
 
 								</tr>
 								<tr>
 									<td colspan="5"></td>
-									<td><?= array_sum($jumlahabsolut) / count($jumlah2); ?></td>
-									<td><?= array_sum($jumlah_error_pangkat) / count($jumlah2); ?></td>
-									<td><?= array_sum($jumlah_persen_error) / count($jumlah2) . '%'; ?></td>
+									<td class="font-viga"><?= array_sum($jumlahabsolut) / count($jumlah2); ?></td>
+									<td class="font-viga"><?= array_sum($jumlah_error_pangkat) / count($jumlah2); ?></td>
+									<td class="font-viga"><?= array_sum($jumlah_persen_error) / count($jumlah2) . '%'; ?></td>
 								</tr>
 								<tr>
 									<td colspan="5"></td>

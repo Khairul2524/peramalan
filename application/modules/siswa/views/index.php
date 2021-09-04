@@ -52,7 +52,7 @@
 									<td><?= $d->jumlah ?></td>
 									<td class="text-center">
 										<button class="btn btn-sm btn-warning btn-flat ubah" title="Ubah data" data-toggle="modal" data-target="#exampleModal" data-id="<?= $d->id ?>"><i class="fa fa-edit"></i></button>
-										<a href="<?= site_url('siswa/hapus/') . $d->id ?>" class="btn btn-sm btn-danger btn-flat tombol-hapus" title="Hapus Dusun"><i class="fa fa-trash"></i></a>
+										<a href="<?= site_url('siswa/hapus/') . $d->id ?>" class="btn btn-sm btn-danger btn-flat tombol-h" title="Hapus Dusun"><i class="fa fa-trash"></i></a>
 									</td>
 								</tr>
 							<?php } ?>

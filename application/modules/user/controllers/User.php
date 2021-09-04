@@ -81,7 +81,7 @@ class user extends MX_Controller
 	{
 		// var_dump($id);
 		// die;
-		$this->dusun->delete($id);
+		$this->user->delete($id);
 		$this->session->set_flashdata('berhasil', 'User Berhasil Dihapus!');
 		redirect('user');
 	}

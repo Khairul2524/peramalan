@@ -70,7 +70,7 @@ class Role extends MX_Controller
 	{
 		// var_dump($id);
 		// die;
-		$this->dusun->delete($id);
+		$this->role->delete($id);
 		$this->session->set_flashdata('berhasil', 'Role Berhasil Dihapus!');
 		redirect('role');
 	}

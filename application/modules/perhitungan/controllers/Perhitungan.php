@@ -21,11 +21,12 @@ class Perhitungan extends MX_Controller
 		// var_dump($data['username']);
 		// die();
 		$this->load->view('template/header');
-		$this->load->view('template/navbar', $data);
-		$this->load->view('template/sidebar', $data);
+		$this->load->view('template/navbar');
+		$this->load->view('template/sidebar');
 		$this->load->view('index', $data);
 		$this->load->view('template/footer');
 	}
+
 
 	public function register()
 	{

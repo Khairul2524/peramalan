@@ -17,10 +17,11 @@ if (flashberhasil) {
         'success'
     )
 }
-$('.tombol-hapus').on('click', function (e) {
+
+
+$('.tombol-h').on('click', function (e) {
     e.preventDefault()
     const a = $(this).attr('href')
-
 
     Swal.fire({
         title: '<strong>Apakah Anda Yakin ?</strong>',

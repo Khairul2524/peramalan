@@ -48,35 +48,29 @@
                     </a>
                 </li>
                 <!-- far fa-envelope" -->
-                <!-- <li class="nav-item">
+                <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-cogs"></i>
+                        <i class="nav-icon fas fa-users"></i>
                         <p class="font-viga">
-                            Perhitungan
+                            User
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="<?= base_url('penduduk') ?>" class="nav-link">
+                            <a href="<?= base_url('user') ?>" class="nav-link">
                                 <i class="fas fa-user nav-icon"></i>
-                                <p class="font-viga">Penduduk</p>
+                                <p class="font-viga">Users</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?= base_url('Keluarga') ?>" class="nav-link">
+                            <a href="<?= base_url('role') ?>" class="nav-link">
                                 <i class="fas fa-users nav-icon"></i>
-                                <p class="font-viga">Keluarga</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?= base_url('importpenduduk') ?>" class="nav-link">
-                                <i class="fa fa-list nav-icon"></i>
-                                <p class="font-viga">Import Penduduk</p>
+                                <p class="font-viga">Role</p>
                             </a>
                         </li>
                     </ul>
-                </li> -->
+                </li>
 
                 <li class="nav-item">
                     <a href="<?= base_url('auth/keluar') ?>" class="nav-link">

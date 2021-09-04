@@ -50,7 +50,7 @@
 									<td><?= $d->role ?></td>
 									<td class="text-center">
 										<button class="btn btn-sm btn-warning btn-flat tombol-ubah" title="Ubah Dusun" data-toggle="modal" data-target="#exampleModal" data-id="<?= $d->idrole ?>"><i class="fa fa-edit"></i></button>
-										<a href="<?= site_url('role/hapus/') . $d->idrole ?>" class="btn btn-sm btn-danger btn-flat tombol-hapus" title="Hapus Dusun"><i class="fa fa-trash"></i></a>
+										<a href="<?= site_url('role/hapus/') . $d->idrole ?>" class="btn btn-sm btn-danger btn-flat tombol-h" title="Hapus Dusun"><i class="fa fa-trash"></i></a>
 									</td>
 								</tr>
 							<?php } ?>

@@ -15,13 +15,13 @@ class Admin extends MX_Controller
 	{
 
 		$data = array(
-			'role' => $this->db->get('role')->result(),
+			'siswa' => $this->user->getsiswa()
 		);
 		// var_dump($data['username']);
 		// die();
 		$this->load->view('template/header');
-		$this->load->view('template/navbar', $data);
-		$this->load->view('template/sidebar', $data);
+		$this->load->view('template/navbar');
+		$this->load->view('template/sidebar');
 		$this->load->view('index', $data);
 		$this->load->view('template/footer');
 	}
