@@ -1,3 +1,6 @@
+<!-- DataTables -->
+<link rel="stylesheet" href="<?= base_url('assets/backand/') ?>plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="<?= base_url('assets/backand/') ?>plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
 	<!-- Content Header (Page header) -->
@@ -31,35 +34,35 @@
 				</div>
 			</div>
 			<div class="card-body">
-				<div class="table-responsive">
-					<table id="example1" class="table table-bordered table-striped">
-						<thead>
-							<tr>
-								<th>No</th>
-								<th>Tahun Penerimaan</th>
-								<th>Jumlah Siswa</th>
-								<th>Aksi</th>
-							</tr>
-						</thead>
-						<tbody>
-							<?php
-							$no = 1;
-							foreach ($data as $d) {
-							?>
-								<tr>
-									<td><?= $no++ ?></td>
-									<td><?= $d->tahunpenerimaan ?></td>
-									<td><?= $d->jumlah ?></td>
-									<td class="text-center">
-										<button class="btn btn-sm btn-warning btn-flat ubah" title="Ubah data" data-toggle="modal" data-target="#exampleModal" data-id="<?= $d->id ?>"><i class="fa fa-edit"></i></button>
-										<a href="<?= site_url('siswa/hapus/') . $d->id ?>" class="btn btn-sm btn-danger btn-flat tombol-h" title="Hapus Dusun"><i class="fa fa-trash"></i></a>
-									</td>
-								</tr>
-							<?php } ?>
-						</tbody>
 
-					</table>
-				</div>
+				<table id="example1" class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<th>No</th>
+							<th>Tahun Penerimaan</th>
+							<th>Jumlah Siswa</th>
+							<th>Aksi</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php
+						$no = 1;
+						foreach ($data as $d) {
+						?>
+							<tr>
+								<td><?= $no++ ?></td>
+								<td><?= $d->tahunpenerimaan ?></td>
+								<td><?= $d->jumlah ?></td>
+								<td class="text-center">
+									<button class="btn btn-sm btn-warning btn-flat ubah" title="Ubah data" data-toggle="modal" data-target="#exampleModal" data-id="<?= $d->id ?>"><i class="fa fa-edit"></i></button>
+									<a href="<?= site_url('siswa/hapus/') . $d->id ?>" class="btn btn-sm btn-danger btn-flat tombol-h" title="Hapus Dusun"><i class="fa fa-trash"></i></a>
+								</td>
+							</tr>
+						<?php } ?>
+					</tbody>
+
+				</table>
+
 			</div>
 			<!-- /.card-body -->
 			<div class="card-footer">
@@ -104,7 +107,18 @@
 		</div>
 	</div>
 </div>
+<!-- DataTables  & Plugins -->
+<script src="<?= base_url('assets/backand/') ?>plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="<?= base_url('assets/backand/') ?>plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="<?= base_url('assets/backand/') ?>plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script>
+	$(function() {
+		$("#example1").DataTable({
+			"responsive": true,
+			"lengthChange": false,
+			"autoWidth": false
+		});
+	});
 	$(function() {
 		// tambah
 		$('.tambah').on('click', function() {
