@@ -40,13 +40,29 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?= base_url('perhitungan') ?>" class="nav-link">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-cogs"></i>
                         <p class="font-viga">
                             Perhitungan
+                            <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?= base_url('perhitungan') ?>" class="nav-link">
+                                <i class="fas fa-cog nav-icon"></i>
+                                <p class="font-viga">Forecasting</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url('perhitungan/hasil') ?>" class="nav-link">
+                                <i class="fas fa-user-cog nav-icon"></i>
+                                <p class="font-viga">Hasil Peramalan</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
+
                 <!-- far fa-envelope" -->
                 <li class="nav-item">
                     <a href="#" class="nav-link">

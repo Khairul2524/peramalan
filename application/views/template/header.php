@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/backand/') ?>dist/css/mycss.css">
     <!-- jQuery -->
     <script src="<?= base_url('assets/backand/') ?>dist/js/jquery-3.5.1.js"></script>
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-navbar-fixed layout-fixed">

@@ -5,7 +5,7 @@
 		<div class="container-fluid">
 			<div class="row mb-2">
 				<div class="col-sm-6">
-					<h1 class="font-viga">Perhitungan</h1>
+					<h1 class="font-viga">Forecasting</h1>
 				</div>
 			</div>
 		</div>
@@ -103,6 +103,12 @@
 									</tr>
 								<?php } ?>
 								<tr>
+									<td><?= $no++; ?></td>
+									<td colspan="2">Tahun Berikutnya</td>
+									<td><?= $forecast; ?></td>
+									<td colspan="4"></td>
+								</tr>
+								<tr>
 
 									<td colspan="5"></td>
 									<td class="font-viga"><?= array_sum($jumlahabsolut); ?></td>
@@ -133,8 +139,25 @@
 				</div>
 				<!-- /.card-footer-->
 			</div>
+			<?php $jumfor[$a->a] = $forecast;
+			$mad[$a->a] = array_sum($jumlahabsolut) / count($jumlah2);
+			$mse[$a->a] = array_sum($jumlah_error_pangkat);
+			$mape[$a->a] = array_sum($jumlah_persen_error) / count($jumlah2) . '%';
+			?>
+
 			<!-- /.card -->
 		<?php } ?>
+		<?php
+
+
+
+		// var_dump($jumfor);
+		// var_dump($mad);
+		// var_dump($mse);
+		// var_dump($mape);
+
+		?>
+
 	</section>
 	<!-- /.content -->
 </div>

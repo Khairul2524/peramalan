@@ -26,18 +26,20 @@ class Perhitungan extends MX_Controller
 		$this->load->view('index', $data);
 		$this->load->view('template/footer');
 	}
-
-
-	public function register()
+	public function hasil()
 	{
-		// $password = password_hash($this->input->post('password'));
+
 		$data = array(
-			'username' => htmlspecialchars($this->input->post('username')),
-			'password' => htmlspecialchars(password_hash($this->input->post('password'), PASSWORD_DEFAULT)),
-			'idstatus' => htmlspecialchars($this->input->post('status'))
+			'a' => $this->hitung->geta(),
+			'e' => $this->hitung->geta(),
+			'siswa' => $this->hitung->getsiswa(),
 		);
-		// var_dump($data);
-		$insert = $this->user->insert($data);
-		redirect('daftar');
+		// var_dump($data['username']);
+		// die();
+		$this->load->view('template/header');
+		$this->load->view('template/navbar');
+		$this->load->view('template/sidebar');
+		$this->load->view('hasil', $data);
+		$this->load->view('template/footer');
 	}
 }

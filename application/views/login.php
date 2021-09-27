@@ -31,7 +31,7 @@
     <div class="login-box">
         <div class="login-logo">
             <img src="<?= base_url('assets/backand/') ?>dist/img/logostmik.png" width="100" alt=""> <br>
-            <p class="font-viga"><b> <strong>SIPE </strong></b></p>
+            <p class="font-viga"><b> <strong>EXPONENTIAL SMOOTHING </strong></b></p>
         </div>
         <!-- /.login-logo -->
         <div class="card">
