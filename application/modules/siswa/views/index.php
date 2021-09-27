@@ -1,6 +1,7 @@
 <!-- DataTables -->
 <link rel="stylesheet" href="<?= base_url('assets/backand/') ?>plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" href="<?= base_url('assets/backand/') ?>plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
 	<!-- Content Header (Page header) -->
@@ -8,7 +9,7 @@
 		<div class="container-fluid">
 			<div class="row mb-2">
 				<div class="col-sm-6">
-					<h1 class="font-viga">Data Siswa</h1>
+					<h1 class="font-viga">Siswa</h1>
 				</div>
 
 			</div>
@@ -23,15 +24,11 @@
 		<!-- Default box -->
 		<div class="card">
 			<div class="card-header">
-				<h3 class="card-title font-viga">
-					<button class="btn btn-sm btn-block bg-gradient-success btn-flat font-viga tambah" data-toggle="modal" data-target="#exampleModal">Tambah </button>
-				</h3>
-
-				<div class="card-tools">
-					<button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-						<i class="fas fa-minus"></i>
-					</button>
-				</div>
+				<ul class="nav nav-pills">
+					<li class="nav-item mr-2">
+						<button class="btn btn-sm btn-block bg-gradient-success btn-flat font-viga tombol-tambah" data-toggle="modal" data-target="#exampleModal">Tambah Siswa</button>
+					</li>
+				</ul>
 			</div>
 			<div class="card-body">
 
@@ -39,7 +36,7 @@
 					<thead>
 						<tr>
 							<th>No</th>
-							<th>Tahun Penerimaan</th>
+							<th>Tahun Akademik</th>
 							<th>Jumlah Siswa</th>
 							<th>Aksi</th>
 						</tr>
@@ -51,11 +48,12 @@
 						?>
 							<tr>
 								<td><?= $no++ ?></td>
-								<td><?= $d->tahunpenerimaan ?></td>
+								<td><?= $d->tahunakademik ?></td>
 								<td><?= $d->jumlah ?></td>
+
 								<td class="text-center">
-									<button class="btn btn-sm btn-warning btn-flat ubah" title="Ubah data" data-toggle="modal" data-target="#exampleModal" data-id="<?= $d->id ?>"><i class="fa fa-edit"></i></button>
-									<a href="<?= site_url('siswa/hapus/') . $d->id ?>" class="btn btn-sm btn-danger btn-flat tombol-h" title="Hapus Dusun"><i class="fa fa-trash"></i></a>
+									<button class="btn btn-sm btn-warning btn-flat tombol-ubah" title="Ubah Dusun" data-toggle="modal" data-target="#exampleModal" data-id="<?= $d->ids ?>"><i class="fa fa-edit"></i></button>
+									<a href="<?= site_url('siswa/hapus/') . $d->ids ?>" class="btn btn-sm btn-danger btn-flat tombol-h" title="Hapus Dusun"><i class="fa fa-trash"></i></a>
 								</td>
 							</tr>
 						<?php } ?>
@@ -71,46 +69,56 @@
 			<!-- /.card-footer-->
 		</div>
 		<!-- /.card -->
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModal" tabindex="-1" user="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" user="document">
+				<div class="modal-content">
+					<form action="<?= site_url('siswa/tambah') ?>" method="POST">
+						<div class="id">
+							<input type="text" hidden class="form-control" id="id" name="id">
+						</div>
+						<div class="modal-header">
+							<h5 class="modal-title font-viga" id="ModalLabel"></h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<div class="form-group">
+								<label>Tahun Akademik</label>
+								<select class="form-control rounded-0" id="idta" name="idta" required>
 
+									<?php
+									foreach ($tahunakademik as $ta) {
+									?>
+										<option value="<?= $ta->id ?>"><?= $ta->tahunakademik ?></option>
+									<?php }
+									?>
+								</select>
+							</div>
+							<div class="form-group">
+								<label>Jumlah</label>
+								<input type="number" class="form-control rounded-0" id="jumlah" name="jumlah" placeholder="Jumlah Siswa" autocomplete="off" required>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-danger font-viga btn-flat btn-sm" data-dismiss="modal">Batal</button>
+							<button type="submit" class="btn btn-success font-viga btn-flat btn-sm"></button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
 	</section>
 	<!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title font-viga" id="ModalLabels">Tambah Siswa</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<form action="<?= site_url('siswa/tambah') ?>" method="POST">
-				<div class="modal-body">
 
-					<div class="form-group">
-						<label for="ta">Tahun Akademik</label>
-						<input type="text" name="id" id="id" hidden>
-						<input type="text" class="form-control rounded-0" id="ta" name="ta" placeholder="Tahun Akademik" autocomplete="off" required value="">
-					</div>
-					<div class="form-group">
-						<label>Jumlah Siswa</label>
-						<input type="number" class="form-control rounded-0" id="js" name="js" placeholder="Jumlah Siswa" autocomplete="off" required value="">
-					</div>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-sm btn-flat btn-danger font-viga" data-dismiss="modal">Keluar</button>
-					<button type="submit" class="btn btn-success btn-sm btn-flat font-viga">Simpan</button>
-				</div>
-			</form>
-		</div>
-	</div>
-</div>
 <!-- DataTables  & Plugins -->
 <script src="<?= base_url('assets/backand/') ?>plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="<?= base_url('assets/backand/') ?>plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="<?= base_url('assets/backand/') ?>plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+
 <script>
 	$(function() {
 		$("#example1").DataTable({
@@ -121,23 +129,23 @@
 	});
 	$(function() {
 		// tambah
-		$('.tambah').on('click', function() {
-			$('#ModalLabels').html('Tambah Siswa')
+		$('.tombol-tambah').on('click', function() {
+			$('#ModalLabel').html('Tambah Siswa')
 			$('.modal-footer button[type= submit]').html('Simpan')
 			$('#id').val('')
-			$('#ta').val('')
-			$('#js').val('')
-
+			$('#idta').val('')
+			$('#jumlah').val('')
 		})
 		// ubah
-		$('.ubah').on('click', function() {
-			$('#ModalLabels').html('Ubah Siswa')
+		$('.tombol-ubah').on('click', function() {
+			$('#ModalLabel').html('Ubah Siswa')
 			$('.modal-footer button[type= submit]').html('Ubah')
-			$('.modal-content form').attr('action', `<?= base_url('siswa/simpanubah') ?>`)
+			$('.modal-content form').attr('action', `<?= site_url('siswa/ubah') ?>`)
+
 			const id = $(this).data('id')
-			// console.log(id);
+			console.log(id)
 			$.ajax({
-				url: `<?= base_url('siswa/ubah') ?>`,
+				url: `<?= site_url('siswa/getubah') ?>`,
 				data: {
 					id: id
 				},
@@ -145,9 +153,9 @@
 				dataType: 'json',
 				success: function(data) {
 					// console.log(data)
-					$('#id').val(data.id)
-					$('#ta').val(data.tahunpenerimaan)
-					$('#js').val(data.jumlah)
+					$('#id').val(data.ids)
+					$('#idta').val(data.idta)
+					$('#jumlah').val(data.jumlah)
 				}
 			})
 		})

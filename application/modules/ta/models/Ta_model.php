@@ -1,16 +1,16 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-class siswa_model extends CI_Model
+class Ta_model extends CI_Model
 {
-    public $tabel = 'jumlahsiswa';
-    public $id  = 'ids';
-    public function get()
-    {
-        return  $this->db->from($this->tabel)->join('tahunakademik', 'tahunakademik.id=jumlahsiswa.idta')->get()->result();
-    }
+    public $tabel = 'tahunakademik';
+    public $id  = 'id';
     public function insert($data)
     {
         $this->db->insert($this->tabel, $data);
+    }
+    public function getall()
+    {
+        return $this->db->get($this->tabel)->result();
     }
     public function getid($id)
     {

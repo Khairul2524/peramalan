@@ -10,6 +10,6 @@ class Perhitungan_model extends CI_Model
     }
     public function getsiswa()
     {
-        return $this->db->get('jumlahsiswa')->result();
+        return  $this->db->from('jumlahsiswa')->join('tahunakademik', 'tahunakademik.id=jumlahsiswa.idta')->get()->result();
     }
 }

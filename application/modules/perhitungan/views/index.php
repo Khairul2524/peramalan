@@ -61,7 +61,7 @@
 								?>
 									<tr>
 										<td><?= $no++ ?></td>
-										<td><?= $d->tahunpenerimaan ?></td>
+										<td><?= $d->tahunakademik ?></td>
 										<td><?= $d->jumlah ?></td>
 
 										<?php
