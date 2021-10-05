@@ -106,10 +106,10 @@
                                     <?php
                                     $data = ($this->session->userdata('jumfor'));
                                     // var_dump($data);
-
+                                if($data){
                                     foreach ($data as $d) {
                                         echo $d[$a->a];
-                                    }
+                                    }}
                                     ?>
                                 </td>
                                 <td>
