@@ -19,13 +19,17 @@ class auth extends MX_Controller
                 if ($cekuser['idrole'] == 1) {
                     $data = array(
                         'username'  => $cekuser['username'],
+                        'nama'  => $cekuser['nama'],
                         'idrole'  => $cekuser['idrole']
                     );
+                    // var_dump($data);
+                    // die;
                     $this->session->set_userdata($data);
                     redirect('admin');
                 } elseif ($cekuser['idrole'] == 2) {
                     $data = [
                         'username'  => $cekuser['username'],
+                        'nama'  => $cekuser['nama'],
                         'idrole'    => $cekuser['idrole']
                     ];
                     $this->session->set_userdata($data);

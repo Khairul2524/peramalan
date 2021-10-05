@@ -16,7 +16,9 @@ class Perhitungan extends MX_Controller
 
 		$data = array(
 			'a' => $this->hitung->geta(),
+			'e' => $this->hitung->geta(),
 			'siswa' => $this->hitung->getsiswa(),
+			'tahunakademik' => $this->db->get('tahunakademik')->result()
 		);
 		// var_dump($data['username']);
 		// die();

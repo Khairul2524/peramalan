@@ -1,8 +1,8 @@
 <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
-        <b>Versi</b> 2.0.0
+        <b>Versi</b> 1.0.0
     </div>
-    <strong>Copyright &copy;<?= date('Y') ?>. Sipe</strong> All rights.
+    <strong>Copyright &copy; <?= date('Y') ?>. Exponential Smoothing | Hakakode.site</strong>
 </footer>
 
 <!-- Control Sidebar -->

@@ -3,7 +3,7 @@
     <!-- Brand Logo -->
     <a href="<?= base_url('assets/backand/') ?>index3.html" class="brand-link bg-gradient-success">
         <img src="<?= base_url('assets/backand/dist/img/logostmik.png') ?>" class="brand-image elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light font-viga"><strong>SIPE</strong></span>
+        <span class="brand-text font-weight-light font-viga">EXPONENTIAL S</span>
     </a>
 
     <!-- Sidebar -->
@@ -14,7 +14,7 @@
                 <img src="<?= base_url('assets/backand/') ?>dist/img/aku1.jpeg" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block font-viga"><?= $this->session->userdata('username') ?></a>
+                <a href="#" class="d-block font-viga"><?= $this->session->userdata('nama') ?></a>
             </div>
         </div>
 
@@ -32,13 +32,29 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?= base_url('siswa') ?>" class="nav-link">
-                        <i class="nav-icon fas fa-home"></i>
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-user-graduate"></i>
                         <p class="font-viga">
-                            Jumlah Siswa
+                            Siswa
+                            <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?= base_url('siswa') ?>" class="nav-link">
+                                <i class="fas fa-graduation-cap nav-icon"></i>
+                                <p class="font-viga">Jumlah Siswa</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url('ta') ?>" class="nav-link">
+                                <i class="fas fa-chalkboard-teacher nav-icon"></i>
+                                <p class="font-viga">Tahun Akademik</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
+
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-cogs"></i>

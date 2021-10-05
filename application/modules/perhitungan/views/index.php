@@ -15,148 +15,207 @@
 	<!-- Main content -->
 	<section class="content">
 		<!-- Default box -->
-		<?php
-		foreach ($a as $a) {
-		?>
-			<div class="card">
-				<div class="card-header">
-					<h3 class="card-title font-viga">Perhitungan Forecast a= <?= $a->a ?></h3>
+		<!-- Default box -->
+		<div class="card">
+			<div class="card-header">
+				<h3 class="card-title font-viga">Grafik Jumlah Siswa</h3>
 
-					<div class="card-tools">
-						<button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-							<i class="fas fa-minus"></i>
-						</button>
-					</div>
+				<div class="card-tools">
+					<button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+						<i class="fas fa-minus"></i>
+					</button>
 				</div>
-				<div class="card-body">
-					<div class="table-responsive">
-						<table id="example1" class="table table-bordered table-striped">
-							<thead>
-								<tr>
-									<th>No</th>
-									<th>Tahun Penerimaan</th>
-									<th>Jumlah Siswa</th>
-									<th>Forecast
-										<br>
-										a= <?= $a->a; ?>
-									</th>
-									<th>error</th>
-									<th>absolut</th>
-									<th>error^2</th>
-									<th>% Error</th>
-								</tr>
-							</thead>
-							<tbody>
-								<?php
-								$ha = 1 - $a->a;
-								$forecast = '';
-								$jumlah = '';
-								$jumlahabsolut = [];
-								$jumlah_error_pangkat = [];
-								$jumlah_persen_error = [];
-								$jumlah2 = [];
-								// echo $ha;
-								$no = 1;
-								foreach ($siswa as $d) {
-								?>
+			</div>
+			<div class="card-body">
+				<form action="" method="POST">
+					<div class="form-group">
+						<label>Tahun Akademik</label>
+						<select class="form-control rounded-0" id="idta" name="idta" required>
+
+							<?php
+							foreach ($tahunakademik as $ta) {
+
+							?>
+								<option value="<?= $ta->id ?>"><?= $ta->tahunakademik ?></option>
+							<?php }
+							?>
+						</select>
+					</div>
+					<input type="submit" name="aksi" class="btn btn-success font-viga btn-flat btn-sm" value="Ramal" />
+				</form>
+			</div>
+			<!-- /.card-body -->
+			<div class="modal-footer">
+			</div>
+		</div>
+		<!-- Default box -->
+		<?php
+		if (isset($_POST['aksi'])) {
+			$tahun   = $_POST['idta'];
+			foreach ($a as $e) {
+
+		?>
+				<div class="card">
+					<div class="card-header">
+						<h3 class="card-title font-viga">Forecast <?= $e->a; ?></h3>
+						<div class="card-tools">
+							<button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+								<i class="fas fa-minus"></i>
+							</button>
+						</div>
+					</div>
+					<div class="card-body">
+						<?php
+						$ha = 1 - $e->a;
+						$forecast = '';
+						$forecast1 = '';
+						$jumlah = '';
+						$jumlahabsolut = [];
+						$jumlah_error_pangkat = [];
+						$jumlah_persen_error = [];
+						$jumlah2 = [];
+						$no = 1;
+						?>
+						<div class="table-responsive">
+							<table id="example1" class="table table-bordered table-striped">
+								<thead>
 									<tr>
-										<td><?= $no++ ?></td>
-										<td><?= $d->tahunakademik ?></td>
-										<td><?= $d->jumlah ?></td>
+										<th>No</th>
+										<th>Tahun Penerimaan</th>
+										<th>Jumlah Siswa</th>
+										<th>Forecast
+											<br>
+											a= <?= $e->a; ?>
+										</th>
+										<th>error</th>
+										<th>absolut</th>
+										<th>error^2</th>
+										<th>% Error</th>
+									</tr>
+								</thead>
+								<tbody>
+									<?php
+									$no = 1;
+									foreach ($tahunakademik as $ta) {
+										echo "<tr>";
+										if ($ta->id < $tahun) {
 
-										<?php
+											echo "<td>" . $no++ . "</td>";
+											echo "<td>" . $ta->tahunakademik . "</td>";
+											$query = $this->db->get_where('jumlahsiswa', ['idta' => $ta->id])->row();
 
-										if (!$jumlah) {
-											$q = $a->a * $d->jumlah;
-											$r = $ha * $d->jumlah;
-											// echo $q;
+											if ($query) {
+												// if ($jumlah) {
 
-											echo "<td></td>";
-											echo "<td></td>";
-											echo "<td></td>";
-											echo "<td></td>";
-											echo "<td></td>";
-											$forecast =  $q + $r;
-											$jumlah = $forecast;
-										} else {
-											$q = $a->a * $d->jumlah;
-											$r = $ha * $jumlah;
-											// echo $q;
-											echo "<td>" . $forecast . "</td>";
-											$erorr = $d->jumlah - $forecast;
-											echo "<td>" . $erorr . "</td>";
-											$absolut = abs($erorr);
-											echo "<td>" . $absolut . "</td>";
-											$error_pangkat = pow($absolut, 2);
-											echo "<td>" . number_format($error_pangkat, 2) . "</td>";
-											$persen_error = number_format($absolut / $d->jumlah, 2) * 100;
-											echo "<td>" . $persen_error  . '%' . "</td>";
-											$forecast = number_format($q + $r, 2);
-											$jumlah = $forecast;
-											$jumlahabsolut[] = $absolut;
-											$jumlah_error_pangkat[] = $error_pangkat;
-											$jumlah_persen_error[] = $persen_error;
+												echo "<td>" . $query->jumlah . "</td>";
+												// echo $q;
+
+												if (!$jumlah) {
+													$k = $e->a * $query->jumlah;
+													$h = $ha * $query->jumlah;
+													$forecast =  $k + $h;
+													$jumlah = $forecast;
+													echo "<td></td>";
+													echo "<td></td>";
+													echo "<td></td>";
+													echo "<td></td>";
+													echo "<td></td>";
+													$jumlah2[] = $ta->id;
+												} else {
+													$k = $e->a * $query->jumlah;
+													$h = $ha * $jumlah;
+													echo "<td>" . $forecast . "</td>";
+													$forecast = number_format($k + $h, 2);
+													// echo $forecast;
+													// echo '<br>';
+													// echo $query->jumlah;
+													// echo '<br>';
+													$erorr = $query->jumlah - $jumlah;
+													echo "<td>" . $erorr . "</td>";
+													$absolut = abs($erorr);
+													echo "<td>" . $absolut . "</td>";
+													$error_pangkat = pow($absolut, 2);
+													echo "<td>" . number_format($error_pangkat, 2) . "</td>";
+													$persen_error = number_format($absolut / $query->jumlah, 2) * 100;
+													echo "<td>" . $persen_error  . '%' . "</td>";
+													$forecast = number_format($k + $h, 2);
+													$jumlah = $forecast;
+													$jumlahabsolut[] = $absolut;
+													$jumlah_error_pangkat[] = $error_pangkat;
+													$jumlah_persen_error[] = $persen_error;
+													$jumlah2[] = $ta->id;
+												}
+											} else {
+												$k = $e->a * round($forecast);
+												$h = $ha * $forecast;
+												echo "<td>" . round($forecast) . "</td>";
+												$forecast = number_format($k + $h, 2);
+												// $forecast = $forecast;
+												echo "<td>" . $forecast . "</td>";
+												$erorr = round($forecast) - $forecast;
+												echo "<td>" . number_format($erorr, 2) . "</td>";
+												$absolut = abs($erorr);
+												echo "<td>" . number_format($absolut, 2) . "</td>";
+												$error_pangkat = pow($absolut, 2);
+												echo "<td>" . number_format($error_pangkat, 2) . "</td>";
+												$persen_error = number_format($absolut / round($forecast), 2) * 100;
+												echo "<td>" . $persen_error  . '%' . "</td>";
+												// $forecast = number_format($k + $h, 2);
+												$jumlah = $forecast;
+												$jumlahabsolut[] = $absolut;
+												$jumlah_error_pangkat[] = $error_pangkat;
+												$jumlah_persen_error[] = $persen_error;
+												$jumlah2[] = $ta->id;
+											}
+										} elseif ($ta->id == $tahun) {
+											echo "<td>" . $no++ . "</td>";
+											echo "<td colspan='2' >" . $ta->tahunakademik . "</td>";
+											$k = $e->a * round($forecast);
+											$h = $ha * $forecast;
+											// echo "<td>" . round($forecast) . "</td>";
+											$forecast = number_format($k + $h, 2);
+											echo "<td colspan='5'>" . $forecast . "</td>";
+											$data = array(
+												'tahun' => $ta->tahunakademik
+											);
+											$this->session->set_userdata($data);
+											// $jumlah2[] = $ta->id;
 										}
 
-										$jumlah2[] = $d->jumlah;
-										?>
-									</tr>
-								<?php } ?>
-								<tr>
-									<td><?= $no++; ?></td>
-									<td colspan="2">Tahun Berikutnya</td>
-									<td><?= $forecast; ?></td>
-									<td colspan="4"></td>
-								</tr>
-								<tr>
+										echo "</tr>";
+									}
 
-									<td colspan="5"></td>
-									<td class="font-viga"><?= array_sum($jumlahabsolut); ?></td>
-									<td class="font-viga"><?= array_sum($jumlah_error_pangkat); ?></td>
-									<td class="font-viga"><?= array_sum($jumlah_persen_error) . '%'; ?></td>
+									// var_dump($jumlahabsolut);
+									$jumfor['alpha'][$e->a] = $forecast;
+									// echo array_sum($jumlahabsolut);
+									$mad['alpha'][$e->a] = number_format(array_sum($jumlahabsolut) / count($jumlah2), 2);
+									$mse['alpha'][$e->a] = number_format(array_sum($jumlah_error_pangkat) / count($jumlah2), 2);
+									$mape['alpha'][$e->a] = number_format(array_sum($jumlah_persen_error) / count($jumlah2), 2);
 
-								</tr>
-								<tr>
-									<td colspan="5"></td>
-									<td class="font-viga"><?= array_sum($jumlahabsolut) / count($jumlah2); ?></td>
-									<td class="font-viga"><?= array_sum($jumlah_error_pangkat) / count($jumlah2); ?></td>
-									<td class="font-viga"><?= array_sum($jumlah_persen_error) / count($jumlah2) . '%'; ?></td>
-								</tr>
-								<tr>
-									<td colspan="5"></td>
-									<td class="font-viga">MAD</td>
-									<td class="font-viga">MSE</td>
-									<td class="font-viga">MAPE</td>
-								</tr>
-							</tbody>
 
-						</table>
+									$data = array(
+										'jumfor'  => $jumfor,
+										'mad'  => $mad,
+										'mse'  => $mse,
+										'mape'  => $mape
+									);
+									$this->session->set_userdata($data);
+									?>
+
+								</tbody>
+							</table>
+
+						</div>
 					</div>
+					<!-- /.card-body -->
+					<div class="card-footer">
+
+					</div>
+					<!-- /.card-footer-->
 				</div>
-				<!-- /.card-body -->
-				<div class="card-footer">
+		<?php }
+		} ?>
 
-				</div>
-				<!-- /.card-footer-->
-			</div>
-			<?php $jumfor[$a->a] = $forecast;
-			$mad[$a->a] = array_sum($jumlahabsolut) / count($jumlah2);
-			$mse[$a->a] = array_sum($jumlah_error_pangkat);
-			$mape[$a->a] = array_sum($jumlah_persen_error) / count($jumlah2) . '%';
-			?>
-
-			<!-- /.card -->
-		<?php } ?>
-		<?php
-
-
-
-		// var_dump($jumfor);
-		// var_dump($mad);
-		// var_dump($mse);
-		// var_dump($mape);
-
-		?>
 
 	</section>
 	<!-- /.content -->

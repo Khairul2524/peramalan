@@ -11,7 +11,7 @@
     <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown mr-5">
             <a class="nav-link font-viga" data-toggle="dropdown" href="#">
-                <?= $this->session->userdata('username') . '  ' ?><i class="far fa-bell"></i>
+                <?= $this->session->userdata('nama') . '  ' ?><i class="far fa-bell"></i>
             </a>
             <div class="dropdown-menu dropdown-menu-md dropdown-menu-right">
                 <a href="<?= base_url('auth/keluar') ?>" class="dropdown-item font-viga">

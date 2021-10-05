@@ -15,9 +15,10 @@ class Admin extends MX_Controller
 	{
 
 		$data = array(
-			'siswa' => $this->user->getsiswa()
+			'siswa' => $this->user->getsiswa(),
+			'a' => $this->user->geta()
 		);
-		// var_dump($data['username']);
+		// var_dump($data['siswa']);
 		// die();
 		$this->load->view('template/header');
 		$this->load->view('template/navbar');

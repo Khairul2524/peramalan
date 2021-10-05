@@ -46,32 +46,69 @@
 
 <script>
 	var ctx = document.getElementById("myChart").getContext('2d');
+	var dataFirst = {
+
+		data: [<?php
+				foreach ($a as $e) {
+					$data = ($this->session->userdata('mad'));
+					if ($data) {
+						foreach ($data as $d) {
+							echo $d[$e->a] . ',';
+						}
+					}
+				}
+
+				?>],
+		borderColor: 'red',
+		backgroundColor: 'transparent',
+		// lineTension: 0.3,
+		// Set More Options
+	};
+
+	var dataSecond = {
+		data: [<?php
+				foreach ($a as $e) {
+					$data = ($this->session->userdata('mse'));
+					if ($data) {
+						foreach ($data as $d) {
+							echo $d[$e->a] . ',';
+						}
+					}
+				}
+
+				?>],
+		borderColor: 'green',
+		backgroundColor: 'transparent',
+		// Set More Options
+	};
+	var datathere = {
+		data: [<?php
+				foreach ($a as $e) {
+					$data = ($this->session->userdata('mape'));
+					if ($data) {
+						foreach ($data as $d) {
+							echo $d[$e->a] . ',';
+						}
+					}
+				}
+
+				?>],
+		borderColor: 'orange',
+		backgroundColor: 'transparent',
+		// Set More Options
+	};
+
 	var myChart = new Chart(ctx, {
 		type: 'line',
+
 		data: {
 			labels: [<?php
-						foreach ($siswa as $sis) {
-							$jumsis = $sis->tahunpenerimaan;
-							echo "'$jumsis'" . ",";
+						foreach ($a as $a) {
+							$alfa = $a->a;
+							echo "'$alfa'" . ",";
 						}
 						?>],
-			datasets: [{
-				data: [<?php
-						foreach ($siswa as $sis) {
-							$jumlah = $sis->jumlah;
-							echo "'$jumlah'" . ",";
-						}
-						?>],
-				// backgroundColor: [
-				//     'rgba(255, 99, 132, 0.2)',
-
-				// ],
-				// borderColor: [
-				//     'rgba(255,99,132,1)',
-
-				// ],
-				borderWidth: 1
-			}]
+			datasets: [dataFirst, dataSecond, datathere]
 		},
 		options: {
 			scales: {

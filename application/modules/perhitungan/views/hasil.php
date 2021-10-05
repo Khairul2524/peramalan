@@ -100,39 +100,54 @@
                         ?>
                             <tr>
                                 <td><?= $no++; ?></td>
-                                <td> 2020/2021</td>
+                                <td><?= $this->session->userdata('tahun') ?></td>
                                 <td><?= $a->a; ?></td>
                                 <td>
                                     <?php
-                                    foreach ($jumfor as $jf) {
-                                        echo $jf[$a->a];
+                                    $data = ($this->session->userdata('jumfor'));
+                                    // var_dump($data);
+
+                                    foreach ($data as $d) {
+                                        echo $d[$a->a];
                                     }
                                     ?>
                                 </td>
                                 <td>
                                     <?php
-                                    foreach ($mad as $md) {
-                                        echo $md[$a->a];
+                                    $data = ($this->session->userdata('mad'));
+                                    if ($data) {
+                                        foreach ($data as $d) {
+                                            echo $d[$a->a];
+                                        }
                                     }
                                     ?>
                                 </td>
 
                                 <td>
                                     <?php
-                                    foreach ($mse as $ms) {
-                                        echo round($ms[$a->a], 2);
+                                    $data = ($this->session->userdata('mse'));
+                                    if ($data) {
+                                        foreach ($data as $d) {
+                                            echo $d[$a->a];
+                                        }
                                     }
                                     ?>
                                 </td>
                                 <td>
                                     <?php
-                                    foreach ($mape as $mp) {
-                                        echo $mp[$a->a];
+                                    $data = ($this->session->userdata('mape'));
+                                    if ($data) {
+                                        foreach ($data as $d) {
+                                            echo $d[$a->a];
+                                        }
                                     }
                                     ?>
                                 </td>
                             </tr>
                         <?php } ?>
+                        <?php
+
+                        ?>
                     </tbody>
 
                 </table>

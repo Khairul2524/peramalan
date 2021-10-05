@@ -7,7 +7,7 @@
     <title>Sipe</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="shortcut icon" href="<?= base_url('assets/backand/dist/img/logostmik.png') ?>" type="image/x-icon">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="<?= base_url('assets/backand/') ?>plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->

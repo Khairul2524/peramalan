@@ -16,6 +16,11 @@ class User_model extends CI_Model
     }
     public function getsiswa()
     {
-        return $this->db->get('jumlahsiswa')->result();
+        return  $this->db->from('jumlahsiswa')->join('tahunakademik', 'tahunakademik.id=jumlahsiswa.idta')->get()->result();
+    }
+
+    public function geta()
+    {
+        return $this->db->get('a')->result();
     }
 }
